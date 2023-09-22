@@ -109,7 +109,7 @@ class Trainer:
                 with torch.no_grad():
                     outputs = model(**batch)
                 loss = outputs.loss
-                total_loss += loss.items()
+                total_loss += loss.item()
             
             return total_loss / len(dataset)
         
