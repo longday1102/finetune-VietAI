@@ -146,6 +146,6 @@ class Trainer:
                 
             
             print("Saving..........")
-            torch.save(model.state_dict(), self.model_name + ".checkpoint")
+            torch.save(model.state_dict(), "{}.checkpoint".format(self.model_name.split("/")[1]))
             print("****************** Save successfully ******************")
         
