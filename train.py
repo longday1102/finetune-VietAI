@@ -21,7 +21,7 @@ class Trainer:
         model_name: str,
         dataset_name: str,
         num_epochs: int,
-        batch_size: int,
+        batch_size: int = 1,
         logging_step: int = 50,
         use_peft: bool = False,
         use_4bit: bool = False,
