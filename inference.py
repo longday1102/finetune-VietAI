@@ -16,16 +16,12 @@ class Inference:
         self,
         model_name: str,
         checkpoint: str,
-        instruction: str,
-        input: str = None,
         use_peft: bool = False,
         use_4bit: bool = False
         ):
         self.model_name = model_name
         self.checkpoint = checkpoint
         self.prompter = Prompter()
-        self.instruction = instruction
-        self.input = input
         self.use_peft = use_peft
         self.use_4bit = use_4bit
         self.device = torch.device("cuda:0") if torch.cuda.is_available else torch.device("cpu")
@@ -74,10 +70,10 @@ class Inference:
         model.load_state_dict(checkpoint)
         return model
     
-    def get_answer(self):
+    def get_answer(self, instruction: str, input :str = None):
         prompt = self.prompter.generate_prompt(
-            instruction = self.instruction,
-            input = self.input,
+            instruction = instruction,
+            input = input,
             )
         inputs = self.tokenizer(prompt, return_tensors = "pt")
         inputs = {k:v.to(self.device) for k, v in inputs.items()}
