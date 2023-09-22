@@ -66,7 +66,7 @@ class Inference:
                 )
             model = get_peft_model(model, lora_config)
         
-        checkpoint = torch.load(checkpoint)
+        checkpoint = torch.load(self.checkpoint)
         model.load_state_dict(checkpoint)
         return model
     
