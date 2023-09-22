@@ -14,13 +14,14 @@ from peft import (
 class Inference:
     def __init__(
         self,
+        model_name: str,
         checkpoint: str,
         instruction: str,
         input: str = None,
         use_peft: bool = False,
         use_4bit: bool = False
         ):
-        self.model_name = checkpoint.split(".")[0]
+        self.model_name = model_name
         self.checkpoint = checkpoint
         self.prompter = Prompter()
         self.instruction = instruction
